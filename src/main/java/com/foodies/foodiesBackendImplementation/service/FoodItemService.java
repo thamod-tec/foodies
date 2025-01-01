@@ -32,4 +32,8 @@ public class FoodItemService {
     public void deleteFoodItem(String id) {
         foodItemRepository.deleteById(id);
     }
+
+    public List<FoodItem> searchFoodItems(String query) {
+        return foodItemRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(query, query);
+    }
 }

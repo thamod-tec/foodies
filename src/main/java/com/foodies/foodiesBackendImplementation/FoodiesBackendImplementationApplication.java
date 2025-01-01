@@ -11,8 +11,5 @@ public class FoodiesBackendImplementationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FoodiesBackendImplementationApplication.class, args);
 	}
-
-
-
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.foodies.foodiesBackendImplementation.model.FoodItem;
 import com.foodies.foodiesBackendImplementation.service.FoodItemService;
@@ -29,6 +30,12 @@ public class FoodItemController {
     @GetMapping("/shop-owner/{shopOwnerId}")
     public List<FoodItem> getFoodItemsByShopOwner(@PathVariable String shopOwnerId) {
         return foodItemService.getFoodItemsByShopOwner(shopOwnerId);
+    }
+
+    //search
+    @GetMapping("/search")
+    public List<FoodItem> searchFoodItems(@RequestParam String query) {
+        return foodItemService.searchFoodItems(query);
     }
 
     // Add a food item by shop owner
