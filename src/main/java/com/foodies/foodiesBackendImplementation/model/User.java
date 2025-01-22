@@ -1,20 +1,21 @@
 package com.foodies.foodiesBackendImplementation.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection="users")
 public class User {
     @Id
-    @GeneratedValue
     private String id;
     private String username;
     private String password;
