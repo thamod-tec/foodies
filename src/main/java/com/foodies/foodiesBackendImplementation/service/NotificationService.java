@@ -47,3 +47,12 @@ public class NotificationService {
         notifications.forEach(n -> n.setRead(true));
         notificationRepository.saveAll(notifications);
     }
+
+    public void deleteNotification(String id) {
+        notificationRepository.deleteById(id);
+    }
+
+    public void deleteAllUserNotifications(String userId) {
+        notificationRepository.deleteByUserId(userId);
+    }
+}
