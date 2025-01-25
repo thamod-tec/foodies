@@ -29,4 +29,21 @@ public class NotificationService {
         return notificationRepository.findByUserIdAndRead(userId, false);
     }
 
-    
+    public Notification addNotification(Notification notification) {
+        return notificationRepository.save(notification);
+    }
+
+    public Notification markNotificationAsRead(String id) {
+        Notification notification = notificationRepository.findById(id).orElse(null);
+        if (notification != null) {
+            notification.setRead(true);
+            return notificationRepository.save(notification);
+        }
+        return null;
+    }
+
+    public void markAllNotificationsAsRead(String userId) {
+        List<Notification> notifications = notificationRepository.findByUserIdAndRead(userId, false);
+        notifications.forEach(n -> n.setRead(true));
+        notificationRepository.saveAll(notifications);
+    }
