@@ -92,4 +92,41 @@ public class CartController {
         return new ArrayList<>(items);
     }
 }
+// Supporting classes for reference
+class CartItem {
+    private String id;
+    private String name;
+    private double price;
+    private int quantity;
+
+    // Constructor, getters, and setters
+    public String getId() { return id; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public double getPrice() { return price; }
+    public int getQuantity() { return quantity; }
+}
+
+class User {
+    private String userId;
+    private String name;
+    // Additional user details
+}
+
+class Order {
+    private User user;
+    private List<CartItem> orderedItems;
+    private double totalPrice;
+
+    public Order(User user, List<CartItem> items) {
+        this.user = user;
+        this.orderedItems = items;
+        this.totalPrice = calculateOrderTotal(items);
+    }
+
+    private double calculateOrderTotal(List<CartItem> items) {
+        return items.stream()
+                .mapToDouble(item -> item.getPrice() * item.getQuantity())
+                .sum();
+    }
+}
 
